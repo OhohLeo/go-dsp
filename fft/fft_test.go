@@ -23,7 +23,7 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/mjibson/go-dsp/dsputils"
+	"github.com/ohohleo/go-dsp/dsputils"
 )
 
 const (

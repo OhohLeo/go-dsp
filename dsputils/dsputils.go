@@ -30,6 +30,14 @@ func ToComplex(x []float64) []complex128 {
 	return y
 }
 
+func Real32ToComplex(x []float32) []complex128 {
+	y := make([]complex128, len(x))
+	for n, v := range x {
+		y[n] = complex(float64(v), 0)
+	}
+	return y
+}
+
 // IsPowerOf2 returns true if x is a power of 2, else false.
 func IsPowerOf2(x int) bool {
 	return x&(x-1) == 0
@@ -78,6 +86,15 @@ func ToComplex2(x [][]float64) [][]complex128 {
 	y := make([][]complex128, len(x))
 	for n, v := range x {
 		y[n] = ToComplex(v)
+	}
+	return y
+}
+
+// Real32ToComplex2 returns the complex equivalent of the real-valued matrix.
+func Real32ToComplex2(x [][]float32) [][]complex128 {
+	y := make([][]complex128, len(x))
+	for n, v := range x {
+		y[n] = Real32ToComplex(v)
 	}
 	return y
 }

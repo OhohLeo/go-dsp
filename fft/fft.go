@@ -18,8 +18,18 @@
 package fft
 
 import (
-	"github.com/mjibson/go-dsp/dsputils"
+	"github.com/ohohleo/go-dsp/dsputils"
 )
+
+// FFTReal32 returns the forward FFT of the real-valued 32 bits slice.
+func FFTReal32(x []float32) []complex128 {
+	return FFT(dsputils.Real32ToComplex(x))
+}
+
+// IFFTReal32 returns the inverse FFT of the real-valued 32 bits slice.
+func IFFTReal32(x []float32) []complex128 {
+	return IFFT(dsputils.Real32ToComplex(x))
+}
 
 // FFTReal returns the forward FFT of the real-valued slice.
 func FFTReal(x []float64) []complex128 {
@@ -100,6 +110,11 @@ func SetWorkerPoolSize(n int) {
 	worker_pool_size = n
 }
 
+// FFT2Real32 returns the 2-dimensional, forward FFT of the real-valued matrix.
+func FFT2Real32(x [][]float32) [][]complex128 {
+	return FFT2(dsputils.Real32ToComplex2(x))
+}
+
 // FFT2Real returns the 2-dimensional, forward FFT of the real-valued matrix.
 func FFT2Real(x [][]float64) [][]complex128 {
 	return FFT2(dsputils.ToComplex2(x))
@@ -108,6 +123,11 @@ func FFT2Real(x [][]float64) [][]complex128 {
 // FFT2 returns the 2-dimensional, forward FFT of the complex-valued matrix.
 func FFT2(x [][]complex128) [][]complex128 {
 	return computeFFT2(x, FFT)
+}
+
+// IFFT2Real returns the 2-dimensional, inverse FFT of the real-valued matrix.
+func IFFT2Real32(x [][]float32) [][]complex128 {
+	return IFFT2(dsputils.Real32ToComplex2(x))
 }
 
 // IFFT2Real returns the 2-dimensional, inverse FFT of the real-valued matrix.
